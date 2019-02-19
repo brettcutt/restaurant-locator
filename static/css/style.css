@@ -1,0 +1,10 @@
+#cuisine-search {
+    list-style: none;
+    padding: 0;
+}
+
+#cuisine-search li {
+    float: left;
+    display: block;
+    width: 33%;
+}
