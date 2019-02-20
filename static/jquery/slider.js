@@ -12,7 +12,7 @@ $(function () {
             $("#amount-slider").val("$" + ui.values[0] + " - $" + ui.values[1]);
             amountValues[0] = ui.values[0]
             amountValues[1] = ui.values[1]
-            getAmountValues(amountValues)
+            filterRestaurants()
         }
     },
     );
@@ -22,8 +22,9 @@ $(function () {
 
 });
 
-function getAmountValues(values) {
-    return values
+function getAmountValues() {
+    console.log(amountValues)
+    return amountValues;
 }
 
 
@@ -43,7 +44,7 @@ $(function () {
             $("#rating-slider").val(ui.values[0] + " - " + ui.values[1]);
             ratingValues[0] = ui.values[0]
             ratingValues[1] = ui.values[1]
-            getRatingValues(ratingValues)
+            filterRestaurants()
         }
     },
     );
@@ -55,6 +56,6 @@ $(function () {
 
 
 // Gets the rating values from slide.js
-function getRatingValues(values) {
-    return values
+function getRatingValues() {
+    return ratingValues
 }
