@@ -1,13 +1,14 @@
+// On browser load, make a call to the api and create a list of restaurants
+const restaurantData = "https://developers.zomato.com/api/v2.1/search?entity_id=297&entity_type=city&q=RESTAURANT_URL&category=7%2C9&<YOUR API-KEY-HERE>"
 window.onload = function () {
     $.when(
-        $.getJSON("data.json")
-        // $.getJSON("https://developers.zomato.com/api/v2.1/search?entity_id=297&entity_type=city&q=RESTAURANT_URL&category=7%2C9&apikey=<YOUR_API_KEY>")
+        $.getJSON(restaurantData)
     ).then(
         function (response) {
             restaurants = response.restaurants
-            console.log(restaurants)
-            document.getElementById('restaurant-list').innerHTML = getRestaurantList(restaurants);
 
+            document.getElementById('restaurant-list').innerHTML = getRestaurantList(restaurants);
+            createCuisineCheckbox(restaurants)
         }, function (errorResponse) {
 
             if (errorResponse.status === 404) {
@@ -22,9 +23,8 @@ window.onload = function () {
     )
 }
 
-
+// creates and formats the list of restaurants
 function getRestaurantList(restaurants) {
-
     var result = [];
     restaurants.forEach(function (restaurant) {
 
@@ -37,10 +37,10 @@ function getRestaurantList(restaurants) {
     return result.join(" ");
 }
 
-
+// creates the individual restaurant detail view.
 function onSelectRestaurant(restaurantName) {
     $.when(
-        $.getJSON("data.json")
+        $.getJSON(restaurantData)
     ).then(
         function (response) {
             restaurants = response.restaurants;
@@ -50,10 +50,11 @@ function onSelectRestaurant(restaurantName) {
             restaurant.has_online_delivery == 1 ? bookings = `<p><i class="fas fa-check"></i> Delivery avaliable</p>` : bookings = `<p><i class="fas fa-times"></i> No Delivery</p>`;
             restaurant.phone_number ? phone_number = `<p>${restaurant.phone_number}</p>` : phone_number = `<p>No data</p>`;
             restaurant.phone_number ? phone_number = `<p>${restaurant.phone_number}</p>` : phone_number = `<p>No data</p>`;
-            console.log(restaurant.cuisines)
+
+
             document.getElementById('restaurant-detail').innerHTML = `
             <div class="col-xs-5">
-                <img src="${restaurant.featured_image}" alt="" style='width: 300px;'>
+                <img src="${restaurant.thumb}" alt="" style='width: 300px;'>
             </div>
             <div class="col-xs-7">
                 <h4>${restaurant.name}</h4>
@@ -65,11 +66,10 @@ function onSelectRestaurant(restaurantName) {
                 <p>PHONE NUMBER</p>
                 ${phone_number}
                 <p>OPENING HOURS</p>
-                <P></P>
+                <P>${restaurant.events_url}</P>
             </div>
             `
-
-
         }
     )
 }
+
