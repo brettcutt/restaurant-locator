@@ -7,7 +7,7 @@ function filterRestaurants() {
     // calls the function to filter the categories selected in the cuisines checkboxes
     var categoryString = filterCategory()
 
-    var apiString = 'https://developers.zomato.com/api/v2.1/search?entity_id=297&entity_type=city' + apiKey + cuisineString + categoryString
+    var apiString = apiUrl + apiKey + cuisineString + categoryString
     $.when(
         $.getJSON(apiString)
     ).then(
