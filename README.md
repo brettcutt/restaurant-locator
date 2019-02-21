@@ -11,7 +11,7 @@
   - generate an api key
   - copy the api key
 
-- In the restaurant-api.js file
+- In the `restaurant-api.js` file
  - On the second line of the file, enter your api key between the arrows
  - `const apiKey = "apikey=<YOUR API-KEY-HERE>"`
 

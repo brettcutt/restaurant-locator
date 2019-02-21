@@ -25,7 +25,7 @@ window.onload = function () {
             } else {
                 console.log(errorResponse);
                 $("#restaurant-detail").html(
-                    `< h2 > Error: ${errorResponse.responseJSON.message}</h2 > `
+                    `<h2> Error: ${errorResponse.responseJSON.message}</h2> `
                 );
             }
         }
@@ -34,17 +34,25 @@ window.onload = function () {
 
 // creates and formats the list of restaurants
 function getRestaurantList(restaurants) {
+    console.log("selected", restaurants)
     var result = [];
-    restaurants.forEach(function (restaurant) {
+    if (restaurants == "") {
+        result.push(`
+        <li class="no-restaurants">No restaurants found!</li?
+        `)
+    } else {
 
-        result.push(
-            `
-            <li>
-                <a href="#" class="restaurant-list-item" name="${restaurant.restaurant.name}" onclick="onSelectRestaurant('${restaurant.restaurant.name}')">${restaurant.restaurant.name}</a>
-            </li>
-             `
-        )
-    })
+        restaurants.forEach(function (restaurant) {
+            result.push(
+                `
+                <li>
+                    <a href="#bottom-page" class="restaurant-list-item" name="${restaurant.restaurant.name}" onclick="onSelectRestaurant('${restaurant.restaurant.name}')">${restaurant.restaurant.name}</a>
+                </li>
+                 `
+            )
+        })
+    }
+
     return result.join(" ");
 }
 
@@ -62,10 +70,10 @@ function onSelectRestaurant(restaurantName) {
     restaurant.phone_number ? phone_number = `<p class='restaurant-number'>${restaurant.phone_number}</p>` : phone_number = `<p class='restaurant-number'>No data</p>`;
 
     document.getElementById('restaurant-detail').innerHTML = `
-            <div class="col-xs-6">
-                <img src="${restaurant.thumb}" alt="" style='width: 300px;'>
+            <div class="col-xs-12 col-md-6">
+                <img class="restaurant-image" src="${restaurant.thumb}" alt="${restaurant.name}" ;'>
             </div>
-            <div class="col-xs-6">
+            <div class="col-xs-12 col-md-6">
                 <h3>${restaurant.name}</h3>
                 <p class='restaurant-location'>${restaurant.location.address}</p>
                 <div class='bookings-delivery'>
