@@ -1,9 +1,25 @@
-const apiKey = "&apikey=<YOUR API-KEY-HERE>"
-let restaurantData = "https://developers.zomato.com/api/v2.1/search?entity_id=297&entity_type=city" + apiKey;
+let apiKey = "<YOUR API-KEY-HERE>"
+let apiUrl = 'https://developers.zomato.com/api/v2.1/search?entity_id=297&entity_type=city&apikey='
+let restaurantData = apiUrl + apiKey;
 
 
-// On browser load, make a call to the api and create a list of restaurants
 window.onload = function () {
+    if (apiKey.length == 19) {
+        document.getElementById('restaurant-detail').innerHTML = `
+        <p class='onload-note'>Enter a Zomato API key!</p>`
+    } else {
+        start()
+    }
+}
+
+
+function apikey() {
+    apiKey = document.getElementById('api').value;
+    restaurantData = apiUrl + apiKey;
+    start()
+}
+
+function start() {
 
     document.getElementById('restaurant-detail').innerHTML = `
     <p class='onload-note'>Please select a restaurant!</p>`
@@ -17,6 +33,7 @@ window.onload = function () {
 
             document.getElementById('restaurant-list').innerHTML = getRestaurantList(restaurants);
             restaurantData = restaurants;
+            document.getElementById('api-wrapper').innerHTML = "";
 
         }, function (errorResponse) {
 
