@@ -1,7 +1,7 @@
 function createCheckbox() {
 
     $.when(
-        $.getJSON('checkboxes.json')
+        $.getJSON('data/checkboxes.json')
     ).then(
         function (response) {
             // Category checkboxes
