@@ -20,28 +20,37 @@
 <body>
     <header class='container'>
         <div class="row">
-            <div class="col-xs-2">
+
+            <!-- CATEGORY CHECKBOXES -->
+            <div class="bottom-border col-xs-12 col-sm-3 col-md-2">
+                <p class='heading '><b>CATEGORY</b></p>
+                <button class="checkbox-button btn hidden-sm hidden-md hidden-lg">Expand</button>
                 <div class="category-wrapper">
-                    <p class='heading'><b>CATEGORY</b></p>
                     <ul id="category-search">
+                        <!-- Javascript checkboxes created here from checkboxesjs -->
                     </ul>
                 </div>
-
             </div>
-            <div class="col-xs-6">
+
+
+            <!-- CUISINE CHECKBOXES -->
+            <div class="bottom-border col-xs-12 col-sm-9 col-md-6">
+                <p class='heading'><b>CUISINE</b></p>
+                <button class="checkbox-button btn hidden-sm hidden-md hidden-lg">Expand</button>
+
                 <div class="cuisine-wrapper">
-                    <p class='heading'><b>CUISINE</b></p>
                     <ul id='cuisine-search'>
-
+                        <!-- Javascript checkboxes created here from checkboxesjs -->
                     </ul>
-
                 </div>
             </div>
-            <div class="col-xs-4">
+
+
+            <!-- RATING SLIDER -->
+            <div class="col-xs-12 col-md-4">
                 <div class="row">
 
-                    <!-- RATING SLIDER -->
-                    <div class="col-xs-12 slider">
+                    <div class="col-xs-12 col-sm-6 col-md-12  slider">
                         <label for="rating-slider">Rating</label>
                         <div id="rating-range"'></div>
                         <div class="symbols">
@@ -52,14 +61,15 @@
                     </div>
 
                     <!-- AMOUNT SLIDER -->
-                    <div class="col-xs-12 slider">
+                    <div class="col-xs-12 col-sm-6 col-md-12 slider">
                         <label for="amount-slider">Price</label>
                         <div id="amount-range"'></div>
-                        <!-- <input type="text" id="amount-slider" style="border:0; color:#f6931f; font-weight:bold;"> -->
                         <div class="symbols">
+                            <!-- single dollar sign -->
                             <p>
                                 <i class="fas fa-dollar-sign"></i>
                             </p>
+                            <!-- 4 dollar signs -->
                             <p class="right-symbol">
                                 <i class="fas fa-dollar-sign"></i><i class="fas fa-dollar-sign"></i><i
                                     class="fas fa-dollar-sign"></i><i class="fas fa-dollar-sign"></i>
@@ -69,31 +79,41 @@
 
                 </div>
             </div>
+
         </div>
     </header>
-    <div id='test' class="container">
+
+
+    <div class="container">
         <div class="row restaurant-main">
-            <div id='restaurant-results' class="col-xs-3">
-                <p>RESULTS</p>
+            <!-- RESTAURANT LIST -->
+            <div id='restaurant-results' class="col-xs-12 col-sm-4 col-md-3 bottom-border top-border">
+                <p class=''>RESULTS</p>
+                <button class="expand-button btn hidden-sm hidden-md hidden-lg">Expand</button>
+
                 <ul id="restaurant-list" class='restaurant-list'>
-
+                    <!-- List created from restaurant-api.js here -->
                 </ul>
-
             </div>
-            <div class="col-xs-9">
-                <div>
-                    <div id='restaurant-detail' class="row">
-                    </div>
+
+            <!-- RESTAURANT DETAIL -->
+            <div class="col-xs-12 col-sm-8 col-md-9">
+                <div id='restaurant-detail' class="row">
+                    <!-- Detail created from restaurant-api.js here -->
                 </div>
             </div>
+
         </div>
-        <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-        <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
-        <script src="static/js/checkboxes.js"></script>
-        <script src="static/jquery/slider.js"></script>
-        <script src="static/js/restaurant-api.js"></script>
-        <script src="static/js/filter.js"></script>
-        <script src="static/js/list-highlight.js"></script>
+    </div>
+    <span id='bottom-page' class='hidden-sm hidden-md hidden-lg'></span>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
+    <script src="static/js/checkboxes.js"></script>
+    <script src="static/jquery/slider.js"></script>
+    <script src="static/jquery/filters-mobile.js"></script>
+    <script src="static/js/restaurant-api.js"></script>
+    <script src="static/js/filter.js"></script>
+    <script src="static/js/list-highlight.js"></script>
 </body>
 
 </html>
