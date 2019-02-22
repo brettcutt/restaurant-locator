@@ -12,18 +12,17 @@ $(function () {
             $("#amount-slider").val("$" + ui.values[0] + " - $" + ui.values[1]);
             amountValues[0] = ui.values[0]
             amountValues[1] = ui.values[1]
-            filterRestaurants()
+            filterPrice()
+            // filterRestaurants()
         }
     },
     );
-
     $("#amount-slider").val("$" + $("#amount-range").slider("values", 0) +
         " - $" + $("#amount-range").slider("values", 1));
 
 });
 
 function getAmountValues() {
-    console.log(amountValues)
     return amountValues;
 }
 
@@ -44,7 +43,8 @@ $(function () {
             $("#rating-slider").val(ui.values[0] + " - " + ui.values[1]);
             ratingValues[0] = ui.values[0]
             ratingValues[1] = ui.values[1]
-            filterRestaurants()
+            filterRating()
+            // filterRestaurants()
         }
     },
     );
