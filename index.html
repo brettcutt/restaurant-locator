@@ -49,7 +49,7 @@
                     <!-- AMOUNT SLIDER -->
                     <div class="col-xs-12 col-sm-6 col-md-12 slider">
                         <label for="amount-slider">Price</label>
-                        <div id="amount-range"'></div>
+                        <div id="amount-range"></div>
                         <div class="symbols">
                             <!-- single dollar sign -->
                             <p>
@@ -65,7 +65,7 @@
                     <!-- RATING SLIDER -->
                     <div class="col-xs-12 col-sm-6 col-md-12  slider">
                         <label for="rating-slider">Rating</label>
-                        <div id="rating-range"'></div>
+                        <div id="rating-range"></div>
                         <div class="symbols">
                             <p>1</p>
                             <p class="right-symbol">5</p>
@@ -73,7 +73,7 @@
                         <!-- <input type="text" id="rating-slider" style="border:0; color:#f6931f; font-weight:bold;"> -->
                     </div>
 
-                    <input id='keyword-search' class='keyword-search' type="text" name='keyword'
+                    <input id='keyword-search' value="" class='keyword-search' type="text" name='keyword'
                         placeholder="Keyword search">
                     <button class='keyword-btn' onclick='filterRestaurants()'>Search</button>
 
@@ -106,6 +106,8 @@
                     <div id="api-wrapper">
                         <h1>Restaurants of Adelaide</h1>
                         <p class='onload-note'>Enter a Zomato API key!</p>
+                        <p>If you don't have an api key you can get one from the <a
+                                href="https://developers.zomato.com/api" target="_blank">Zomato website.</a></p>
                         <input type="text" name="api" id="api" class='api' placeholder="API key">
                         <button class='apikey-btn' onclick="apikey()">Enter API KEY</button>
                         <p id='error'></p>
