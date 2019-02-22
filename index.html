@@ -11,30 +11,21 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
-
-
-
-    <title>Document</title>
+    <title>Restaurants of Adelaide</title>
 </head>
 
 <body>
     <header class='container'>
-
-        <div id="api-wrapper">
-            <input type="text" name="api" id="api" placeholder="API key">
-            <button onclick="apikey()">Enter API KEY</button>
-        </div>
-
-
         <div class="row">
 
             <!-- CATEGORY CHECKBOXES -->
             <div class="bottom-border col-xs-12 col-sm-3 col-md-2">
                 <p class='heading '><b>CATEGORY</b></p>
                 <button class="checkbox-button btn hidden-sm hidden-md hidden-lg">Expand</button>
+
                 <div class="category-wrapper">
                     <ul id="category-search">
-                        <!-- Javascript checkboxes created here from checkboxesjs -->
+                        <!-- Javascript checkboxes created here refer to checkboxesjs -->
                     </ul>
                 </div>
             </div>
@@ -47,26 +38,14 @@
 
                 <div class="cuisine-wrapper">
                     <ul id='cuisine-search'>
-                        <!-- Javascript checkboxes created here from checkboxesjs -->
+                        <!-- Javascript checkboxes created here refer to  checkboxesjs -->
                     </ul>
                 </div>
             </div>
 
 
-            <!-- RATING SLIDER -->
             <div class="col-xs-12 col-md-4">
                 <div class="row">
-
-                    <div class="col-xs-12 col-sm-6 col-md-12  slider">
-                        <label for="rating-slider">Rating</label>
-                        <div id="rating-range"'></div>
-                        <div class="symbols">
-                            <p>1</p>
-                            <p class="right-symbol">5</p>
-                        </div>
-                        <!-- <input type="text" id="rating-slider" style="border:0; color:#f6931f; font-weight:bold;"> -->
-                    </div>
-
                     <!-- AMOUNT SLIDER -->
                     <div class="col-xs-12 col-sm-6 col-md-12 slider">
                         <label for="amount-slider">Price</label>
@@ -83,6 +62,21 @@
                             </p>
                         </div>
                     </div>
+                    <!-- RATING SLIDER -->
+                    <div class="col-xs-12 col-sm-6 col-md-12  slider">
+                        <label for="rating-slider">Rating</label>
+                        <div id="rating-range"'></div>
+                        <div class="symbols">
+                            <p>1</p>
+                            <p class="right-symbol">5</p>
+                        </div>
+                        <!-- <input type="text" id="rating-slider" style="border:0; color:#f6931f; font-weight:bold;"> -->
+                    </div>
+
+                    <input id='keyword-search' class='keyword-search' type="text" name='keyword'
+                        placeholder="Keyword search">
+                    <button class='keyword-btn' onclick='filterRestaurants()'>Search</button>
+
 
                 </div>
             </div>
@@ -93,6 +87,8 @@
 
     <div class="container">
         <div class="row restaurant-main">
+            <div class="adelaide"></div>
+            <div class="overlay"></div>
             <!-- RESTAURANT LIST -->
             <div id='restaurant-results' class="col-xs-12 col-sm-4 col-md-3 bottom-border top-border">
                 <p class=''>RESULTS</p>
@@ -104,8 +100,16 @@
             </div>
 
             <!-- RESTAURANT DETAIL -->
-            <div class="col-xs-12 col-sm-8 col-md-9">
+            <div class="col-xs-12 col-sm-8 col-md-9 ">
                 <div id='restaurant-detail' class="row">
+                    <h2 class='select-restaurant'>Please select a restaurant!</h2>
+                    <div id="api-wrapper">
+                        <h1>Restaurants of Adelaide</h1>
+                        <p class='onload-note'>Enter a Zomato API key!</p>
+                        <input type="text" name="api" id="api" class='api' placeholder="API key">
+                        <button class='apikey-btn' onclick="apikey()">Enter API KEY</button>
+                        <p id='error'></p>
+                    </div>
                     <!-- Detail created from restaurant-api.js here -->
                 </div>
             </div>
@@ -121,6 +125,7 @@
     <script src="static/js/restaurant-api.js"></script>
     <script src="static/js/filter.js"></script>
     <script src="static/js/list-highlight.js"></script>
+    <script src="static/js/page-fading.js"></script>
 </body>
 
 </html>

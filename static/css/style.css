@@ -11,6 +11,34 @@ body {
     
     }
 }
+
+/* BUTTONS --> */
+.restaurant-url-btn {
+    padding: 5px 10px;
+}
+
+.restaurant-url-btn, .keyword-btn, .apikey-btn{
+    background-color: #09d0cd ;
+    color: #fff;
+    font-weight: bolder ;
+    text-decoration: none ;
+    border-radius: 5px;
+}
+.restaurant-url-btn:hover, .restaurant-url-btn:focus, .keyword-btn, .apikey-btn{
+    text-decoration: none ;
+    color: #fff ;
+    background-color: #0ab6b3 ;
+}
+
+.btn {
+    display: inline-block;
+    padding: 0 5px !important;
+    background-color: rgb(199, 202, 202);
+    font-weight: bold;
+}
+
+/* <-- BUTTONS */
+
 /* CHECKBOXES --> */
 
 .cuisine-wrapper, .category-wrapper {
@@ -70,17 +98,13 @@ ul {
     }
   
 }
-
-.btn {
-    display: inline-block;
-    padding: 0 5px !important;
-    background-color: rgb(199, 202, 202);
-    font-weight: bold;
-    
-}
 /* <-- CHECKBOXES  */
 
 /* SLIDERS --> */
+.slider p {
+    margin: 0;
+}
+
 #amount-slider {
     width: 100%;
     text-align:justify;
@@ -125,11 +149,43 @@ ul {
 }
 /* <-- SLIDERS */
 
+/* KEYWORD SEARCH BOX --> */
 
+.keyword-search, .api {
+    margin: 5px 0 0 10px;
+    border-radius: 5px;
+}
+
+@media (max-width: 767px) {
+    .keyword-search{
+        margin: 5px 0 10px 10px;
+    }
+}
+
+/* <-- KEYWORD SEARCH BOX */
 .restaurant-main {
     background-color: rgb(243, 243, 243);
     margin: 30px 0;
+    position: relative;
 }
+
+.adelaide {
+    position: absolute;
+    background: url(../images/adelaide.jpg);
+    background-size: cover;
+    left: 0;
+    right:0;
+    top: 0;
+    bottom: 0;
+ }
+ .overlay {
+    position: absolute;
+    background-color: rgba(0,0,0,.6);
+    left: 0;
+    right:0;
+    top: 0;
+    bottom: 0;
+ }
 
 @media (max-width: 767px) {
     .restaurant-main {
@@ -199,15 +255,26 @@ ul {
 
 /* INDIVIDUAL RESTAURANT DETAIL --> */
 
+#api-wrapper {
+    text-align: center;
+}
+
 .onload-note {
     font-size: 25px;
     text-align: center;
 }
 
+.select-restaurant {
+    display: none;
+    text-align: center;
+    
+}
+
 #restaurant-detail {
     margin: 60px 0 0 0px;
-    padding: 20px 10px;;
-    background-color: white;
+    padding: 20px 10px;
+    background-color: rgba(255,255,255,.8);
+    border-radius: 5px;
 }
 
 #restaurant-detail h3 {
@@ -220,7 +287,7 @@ ul {
     margin: 0;
 }
 .restaurant-image {
-    width: 300px;
+    width: 370px;
 }
 
 .bookings-delivery {
@@ -245,6 +312,22 @@ ul {
     font-size: 17px;
     color: red;
 }
+.progress{
+width:50%;
+
+}
+
+.bar1, .bar2, .progress {
+    height: 10px !important;
+
+}
+
+.bar1 {
+    background-color: #28a745!important;
+}
+.bar2 {
+    background-color: #ffc107!important;
+}
 
 @media (max-width: 767px) {
     #restaurant-detail{
@@ -253,9 +336,11 @@ ul {
     }
     .restaurant-image {
         width: 200px;
-
     }
-
+    .progress {
+        display: block;
+        margin: 0 auto;
+    }
 }
 @media (min-width: 768px) and (max-width: 991px) {
     .restaurant-image {
@@ -263,6 +348,13 @@ ul {
         margin: 0 auto;
         width: 350px;
         margin-bottom: 20px;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+    .restaurant-image {
+        width: 300px;
+
     }
 }
 
