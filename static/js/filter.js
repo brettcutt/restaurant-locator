@@ -29,7 +29,7 @@ function filterRestaurants() {
                     document.getElementById('restaurant-list').innerHTML = getRestaurantList(restaurantData);
                 }, 500);
         }
-    )
+    );
 
 }
 // Filter Restaurant by its cuisine. This grabs all the cuisine id values from the checked boxes
@@ -54,7 +54,7 @@ function filterCuisine() {
 // and creates a string that appends to the new api url.
 // eg. &category=969%2C147%2C84, &cusisines= Modern Australia, Morocan, Pizza
 function filterCategory() {
-    var categoryString = ""
+    var categoryString = "";
     $("input:checkbox[name=category-checkbox]:checked").each(function () {
         if (categoryString.length == 0) {
 
@@ -79,7 +79,7 @@ function filterPrice() {
         if (restaurantPrice >= priceRange[0] && restaurantPrice <= priceRange[1]) {
             filteredByPrice.push(restaurant);
         }
-    })
+    });
     document.getElementById('restaurant-list').innerHTML = getRestaurantList(filteredByPrice);
     // return filteredByPrice
 }
@@ -99,7 +99,7 @@ function filterRating() {
         if (restaurantRating >= ratingRange[0] && restaurantRating <= ratingRange[1]) {
             filteredByRating.push(restaurant);
         }
-    })
+    });
     document.getElementById('restaurant-list').innerHTML = getRestaurantList(filteredByRating);
     // return filteredByRating;
 }

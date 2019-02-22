@@ -1,6 +1,6 @@
 // produces the values for the amount slider and passes the values to "getAmountValues" in
 // restaurant-api.js
-var amountValues = [1, 4]
+var amountValues = [1, 4];
 
 $(function () {
     $("#amount-range").slider({
@@ -10,9 +10,9 @@ $(function () {
         values: [1, 4],
         slide: function (event, ui) {
             $("#amount-slider").val("$" + ui.values[0] + " - $" + ui.values[1]);
-            amountValues[0] = ui.values[0]
-            amountValues[1] = ui.values[1]
-            filterPrice()
+            amountValues[0] = ui.values[0];
+            amountValues[1] = ui.values[1];
+            filterPrice();
             // filterRestaurants()
         }
     },
@@ -30,7 +30,7 @@ function getAmountValues() {
 // produces the values for the rating slider and passes the values to "getRatingValues" in
 // restaurant-api.js
 
-var ratingValues = [1, 5]
+var ratingValues = [1, 5];
 
 $(function () {
     $("#rating-range").slider({
@@ -41,9 +41,9 @@ $(function () {
         values: [0, 5],
         slide: function (event, ui) {
             $("#rating-slider").val(ui.values[0] + " - " + ui.values[1]);
-            ratingValues[0] = ui.values[0]
-            ratingValues[1] = ui.values[1]
-            filterRating()
+            ratingValues[0] = ui.values[0];
+            ratingValues[1] = ui.values[1];
+            filterRating();
             // filterRestaurants()
         }
     },
@@ -57,5 +57,5 @@ $(function () {
 
 // Gets the rating values from slide.js
 function getRatingValues() {
-    return ratingValues
+    return ratingValues;
 }

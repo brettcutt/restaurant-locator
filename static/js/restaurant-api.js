@@ -15,7 +15,7 @@ function apikey() {
     apiKey = document.getElementById('api').value;
     restaurantData = apiUrl + apiKey;
     start();
-};
+}
 
 // Once an api key has been entered, this is the main function that will start.
 function start() {
@@ -76,7 +76,7 @@ function getRestaurantList(restaurants) {
                  `
             );
         });
-    };
+    }
 
     return result.join(" ");
 }
@@ -176,7 +176,7 @@ function restaurantUserRating(restaurant) {
     var ratingPercentage = ((restaurant.user_rating.aggregate_rating / 5) * 100).toFixed(1);
 
     // Determines the rating bar colour
-    var barColor = ""
+    var barColor = "";
     if (ratingPercentage >= 0 && ratingPercentage <= 25) {
         barColor = 'bar-red';
     } else if (ratingPercentage > 25 && ratingPercentage <= 50) {

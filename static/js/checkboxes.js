@@ -5,27 +5,40 @@ function createCheckbox() {
     ).then(
         function (response) {
             // Category checkboxes
-            var categories = response.categories
-            var result = []
+            var categories = response.categories;
+            var categoryResult = [];
             categories.forEach(function (category) {
-                result.push(`<li><input name='category-checkbox' class='category-checkbox' onclick="filterRestaurants()" type="checkbox" value='${category.categories.id}'>${category.categories.name}</li>`)
-            })
+                categoryResult.push(
+                    `<li><input name='category-checkbox' 
+                class='category-checkbox' onclick="filterRestaurants()" 
+                type="checkbox" value='${category.categories.id}'>
+                ${category.categories.name}
+                </li>`
+                );
+            });
 
-            result = result.join("")
-            document.getElementById('category-search').innerHTML = result;
+            categoryResult = categoryResult.join("");
+            document.getElementById('category-search').innerHTML = categoryResult;
 
 
             // Cuisine checkboxes
-            var cuisines = response.cuisines
-            var result = []
+            var cuisines = response.cuisines;
+            var cuisineResult = [];
             cuisines.forEach(function (cuisine) {
-                result.push(`<li><input name='cuisine-checkbox' class='cuisine-checkbox' onclick="filterRestaurants()" type="checkbox" value='${cuisine.cuisine.cuisine_id}'>${cuisine.cuisine.cuisine_name}</li>`)
-            })
+                cuisineResult.push(
+                    `<li><input name='cuisine-checkbox' 
+                class='cuisine-checkbox' onclick="filterRestaurants()" 
+                type="checkbox" 
+                value='${cuisine.cuisine.cuisine_id}'>
+                ${cuisine.cuisine.cuisine_name}
+                </li>`
+                );
+            });
 
-            result = result.join("")
-            document.getElementById('cuisine-search').innerHTML = result
+            cuisineResult = cuisineResult.join("");
+            document.getElementById('cuisine-search').innerHTML = cuisineResult;
         }
-    )
+    );
 }
 
-createCheckbox()
+createCheckbox();

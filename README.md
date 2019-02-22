@@ -1,7 +1,18 @@
 # Restaurant Locator
 
-- Live Project: https://brettcutt.github.io/restaurant-locator/
-- GitHub: https://github.com/brettcutt/restaurant-locator
+This project makes use of the Zomato API to filter through and display a wide variety of restaurants from the city of Adelaide.
+- Live Project: 
+  - https://brettcutt.github.io/restaurant-locator/
+- GitHub: 
+  - https://github.com/brettcutt/restaurant-locator
+
+## Table of Contents
+- [Running the code locally](https://github.com/brettcutt/restaurant-locator/blob/master/README.md#running-the-code-locally)
+- [Deployment](https://github.com/brettcutt/restaurant-locator/blob/master/README.md#deployment)
+- [Technologies, Libraries and Languages](https://github.com/brettcutt/restaurant-locator/blob/master/README.md#technologies-libraries-and-languages)
+- [Validation](https://github.com/brettcutt/restaurant-locator/blob/master/README.md#validation)
+- [Media](https://github.com/brettcutt/restaurant-locator/blob/master/README.md#media)
+
 
 ## Running the code locally
 
@@ -19,11 +30,35 @@
    - On the first line of the file, enter your api key between the arrows
    - `let apiKey = "<YOUR API-KEY-HERE>"`
 
-2. In the browser:
-    - Just enter your api key in the input field at the top left hand side of the browser screen.
+2. When the browser is running:
+    - Enter your api key in the input field after the page has loaded.
 
 - Run the application.
 
+## Deployment
+- Start a `new project` in GitHub.
+- In the cli:
+  - `git init`
+  - `git add`
+  - `git commit -m ""`
+  - `git push -u origin master`
+- Go to settings in the projects repository.
+- Scroll down to `GitHub Pages`.
+- Change the source to `master branch`.
+- Go to `https://brettcutt.github.io/restaurant-locator/`
+
+## Technologies, Libraries and Languages
+- HTML5
+- CSS3
+- Javascript
+- Jquery
+- Bootstrap
+- Font Awesome
+- Google Fonts
+## Validation
+- HTML passes the W3C validator.
+- CSS3 passes the W3C validator.
+- Javascript passes using JSHint.
 ## Media
 - Adelaide picture
   - Photo via <a href="https://www.goodfreephotos.com/">Good Free Photos</a>
