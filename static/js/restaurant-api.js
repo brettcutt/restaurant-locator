@@ -90,16 +90,14 @@ function onSelectRestaurant(restaurantName) {
 
     restaurant = restaurant.restaurant;
 
-    restaurant.has_online_delivery == 0 || restaurant.is_delivering_now == 0 ?
-        delivery = `<p class='restaurant-delivery'><i class="fas fa-check "></i> Delivery Avaliable</p>` :
-        delivery = `<p class='restaurant-delivery'><i class="fas fa-times"></i> No Delivery</p>`;
+    var delivery = deliveryService(restaurant);
 
-    restaurant.has_table_booking == 1 || restaurant.is_table_reservation_supported == 1 ?
-        bookings = `<p class='restaurant-booking'><i class="fas fa-check "></i> Bookings Avaliable</p>` :
-        bookings = `<p class='restaurant-booking'><i class="fas fa-times"></i> No Bookings</p>`;
+    var bookings = tableBooking(restaurant);
 
+    var restaurantPrice = restaurantPricing(restaurant);
 
-    var restaurantRating = (restaurant.user_rating.aggregate_rating * 10) * 2;
+    var restaurantRating = restaurantUserRating(restaurant);
+
     $('#restaurant-detail').hide('fade', 1000);
 
     setTimeout(
@@ -118,13 +116,14 @@ function onSelectRestaurant(restaurantName) {
                         </div>
                         <p class='heading'>CUISINES</p>
                         <p class='restaurant-cuisine'>${restaurant.cuisines}</p>
-                        <p class='heading'>PRICE</p>
+                        <p class='heading'>PRICE: ${restaurantPrice[2]}</p>
                         <div class="progress">
-                            <div class="progress-bar bar1" role="progressbar" style="width:${restaurant.price_range * 2}0%" aria-valuenow="${restaurant.price_range}" aria-valuemin="0" aria-valuemax="5"></div>  
+                            <div class="progress-bar ${restaurantPrice[0]}" role="progressbar" style="width:${restaurantPrice[1]}%" aria-valuenow="${restaurant.price_range}" aria-valuemin="0" aria-valuemax="5"></div>  
                         </div>
-                        <p class='heading'>CUSTOMER RATING</p>
+                        
+                        <p class='heading'>CUSTOMER RATING: ${restaurantRating[1]}</p>
                         <div class="progress">
-                            <div class="progress-bar bar2" role="progressbar" style="width:${restaurantRating}%" aria-valuenow="${restaurantRating}" aria-valuemin="0" aria-valuemax="5"></div>
+                            <div class="progress-bar ${restaurantRating[2]}" role="progressbar" style="width:${restaurantRating[0]}%" aria-valuenow="${restaurantRating[0]}" aria-valuemin="0" aria-valuemax="5"></div>
                         </div>
                         <a class='restaurant-url-btn' target="_blank" href="${restaurant.menu_url}">See Menu</a>
                         <a class='restaurant-url-btn' target="_blank" href="${restaurant.url}">More Details</a>
@@ -134,3 +133,68 @@ function onSelectRestaurant(restaurantName) {
         }, 1000);
 }
 
+function tableBooking(restaurant) {
+    restaurant.has_table_booking == 1 || restaurant.is_table_reservation_supported == 1 ?
+        bookings = `<p class='restaurant-booking'><i class="fas fa-check "></i> Bookings Avaliable</p>` :
+        bookings = `<p class='restaurant-booking'><i class="fas fa-times"></i> No Bookings</p>`;
+
+    return bookings;
+}
+
+function deliveryService(restaurant) {
+    restaurant.has_online_delivery == 0 || restaurant.is_delivering_now == 0 ?
+        delivery = `<p class='restaurant-delivery'><i class="fas fa-check "></i> Delivery Avaliable</p>` :
+        delivery = `<p class='restaurant-delivery'><i class="fas fa-times"></i> No Delivery</p>`;
+    return delivery;
+}
+function restaurantPricing(restaurant) {
+
+    // Determines the pricing bar colour
+    var barColor = "";
+    if (restaurant.price_range == 1) {
+        restaurant.price_range = 1.1;
+        barColor = 'bar-green';
+    } else if (restaurant.price_range == 2) {
+        barColor = 'bar-yellow';
+    } else if (restaurant.price_range == 3) {
+        barColor = 'bar-orange';
+    } else if (restaurant.price_range == 4) {
+        barColor = 'bar-red';
+    }
+
+    // Determines the pricing bar length
+    var barLength = (restaurant.price_range - 1) * 33;
+
+    // Determines the number of dollar symbols
+    var dollarSymbolRepeat = `<i class="fas fa-dollar-sign"></i>`.repeat(restaurant.price_range);
+
+    return [barColor, barLength, dollarSymbolRepeat];
+}
+
+function restaurantUserRating(restaurant) {
+
+    var ratingPercentage = ((restaurant.user_rating.aggregate_rating / 5) * 100).toFixed(1);
+
+    // Determines the rating bar colour
+    var barColor = ""
+    if (ratingPercentage >= 0 && ratingPercentage <= 25) {
+        barColor = 'bar-red';
+    } else if (ratingPercentage > 25 && ratingPercentage <= 50) {
+        barColor = 'bar-orange';
+    } else if (ratingPercentage > 50 && ratingPercentage <= 75) {
+        barColor = 'bar-yellow';
+    }
+    else if (ratingPercentage > 75 && ratingPercentage <= 100) {
+        barColor = 'bar-green';
+    }
+
+    var barLength = "";
+    if (restaurant.user_rating.rating_text == "Not rated") {
+        ratingPercentage = "No Rating!";
+    } else {
+        ratingPercentage = ratingPercentage + "%";
+        barLength = (restaurant.user_rating.aggregate_rating * 10) * 2;
+    }
+
+    return [barLength, ratingPercentage, barColor];
+}

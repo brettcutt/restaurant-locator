@@ -322,11 +322,17 @@ width:50%;
 
 }
 
-.bar1 {
+.bar-green {
     background-color: #28a745!important;
 }
-.bar2 {
-    background-color: #ffc107!important;
+.bar-yellow {
+    background-color: yellow!important;
+}
+.bar-orange {
+    background-color: orange!important;
+}
+.bar-red {
+    background-color: red!important;
 }
 
 @media (max-width: 767px) {
