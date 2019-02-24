@@ -2,6 +2,7 @@
 body {
     font-family: 'Roboto', sans-serif !important;
     padding-top: 20px;
+    position: relative;
 
 }
 
@@ -17,14 +18,14 @@ body {
     padding: 5px 10px;
 }
 
-.restaurant-url-btn, .keyword-btn, .apikey-btn{
+.restaurant-url-btn, .keyword-btn, .apikey-btn, .city-btn {
     background-color: #09d0cd ;
     color: #fff;
     font-weight: bolder ;
     text-decoration: none ;
     border-radius: 5px;
 }
-.restaurant-url-btn:hover, .restaurant-url-btn:focus, .keyword-btn, .apikey-btn{
+.restaurant-url-btn:hover, .restaurant-url-btn:focus, .keyword-btn, .apikey-btn, .city-btn{
     text-decoration: none ;
     color: #fff ;
     background-color: #0ab6b3 ;
@@ -141,18 +142,21 @@ ul {
 .ui-state-default {
     border-radius: 20px !important;
     border: 1px solid #09d0cd !important;
+    z-index: 0;
 }
 
 .ui-widget-content {
     border-radius: 20px !important;
     border: 1px solid transparent !important;
+    z-index: 0;;
 }
+
 /* <-- SLIDERS */
 
 /* KEYWORD SEARCH BOX --> */
 
 .keyword-search, .api {
-    margin: 5px 0 0 10px;
+    margin: 5px 0 5px 10px;
     border-radius: 5px;
 }
 
@@ -169,9 +173,9 @@ ul {
     position: relative;
 }
 
-.adelaide {
+#city-pic {
     position: absolute;
-    background: url(../images/adelaide.jpg);
+    background-image: url(../images/adelaide.jpg);
     background-size: cover;
     left: 0;
     right:0;
@@ -180,7 +184,7 @@ ul {
  }
  .overlay {
     position: absolute;
-    background-color: rgba(0,0,0,.6);
+    background-color: rgba(0,0,0,.4);
     left: 0;
     right:0;
     top: 0;
@@ -255,15 +259,6 @@ ul {
 
 /* INDIVIDUAL RESTAURANT DETAIL --> */
 
-#api-wrapper {
-    text-align: center;
-}
-
-.onload-note {
-    font-size: 25px;
-    text-align: center;
-}
-
 .select-restaurant {
     display: none;
     text-align: center;
@@ -273,8 +268,9 @@ ul {
 #restaurant-detail {
     margin: 60px 0 0 0px;
     padding: 20px 10px;
-    background-color: rgba(255,255,255,.8);
+    background-color: rgba(255,255,255,.9);
     border-radius: 5px;
+    display: none;
 }
 
 #restaurant-detail h3 {
@@ -355,14 +351,211 @@ width:50%;
         width: 350px;
         margin-bottom: 20px;
     }
+    .details {
+        padding-left: 50px !important;
+    }
 }
 
 @media (min-width: 992px) and (max-width: 1200px) {
     .restaurant-image {
         width: 300px;
-
     }
 }
 
 /* <-- INDIVIDUAL RESTAURANT DETAIL  */
 
+#api-wrapper {
+    position: absolute;
+    margin-top: 20px;
+    text-align: center;
+    left: 50%;
+    transform: translateX(-50%);
+    z-index: 10; 
+}
+
+.inner-wrapper {
+    padding: 10px;
+    background-color: rgba(255,255,255,.8);
+    border: 1.5px solid rgb(133, 129, 129);
+    border-radius: 5px;
+    box-shadow: 10px 10px 31px -1px rgba(0,0,0,0.75);
+}
+
+.onload-note {
+    font-size: 20px;
+    text-align: center;
+}
+
+.city-overlay{
+    position: absolute;
+    left: 0;
+    right: 0;
+    top:0;
+    bottom:0;
+    background-color: rgba(255,255,255,.8);
+    z-index: 1;
+    display: none;
+}
+
+.arrow-btn{
+    z-index: 4;
+    background-color: transparent;
+    border: none;
+}
+
+.arrow-btn:focus {
+    outline:none;
+}
+.fa-arrow-right, .fa-arrow-left{
+    font-size: 50px;
+}
+
+
+
+.box1, .box2, .box3, .box4 {
+    position: absolute;
+    height: 300px;
+    width: 300px;
+    top: 51%;
+    transform: translate(-50%, -50%);
+    border-radius: 500px;
+    background-size: cover;
+    z-index: 4;
+}
+
+.box {
+    display: none;
+}
+
+.box1{
+    left: 50%;
+    z-index: 3;
+    font-size: 40px;
+}
+
+.box2{
+    left: 20%;
+height: 200px;
+width:200px;
+font-size: 31px;
+}
+
+.box3{
+    left: 50%;
+    height: 100px;
+    width:100px;
+    font-size: 22px;
+    z-index: 1;
+}
+
+.box4{
+    left: 80%;
+    height: 200px;
+    width:200px;
+    font-size: 31px;
+}
+
+#box1{ 
+    background-image: url("../images/adelaide.jpg");
+    background-position: right;
+}
+
+#box2{
+    background-image: url("../images/melbourne.jpg");
+}
+#box3{
+    background-image: url("../images/sydney.jpg");
+}
+#box4{
+    background-image: url("../images/brisbane.jpg");
+}
+
+.city-name {
+    text-align: center;
+    color: black;
+    position: absolute;
+    bottom: -100px;
+    left: 0;
+    right: 0;
+}
+
+#btn-next {
+    position: absolute;
+    left: 70%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+#btn-prev {
+    position: absolute;
+    left: 30%;
+    top: 50%;
+    transform: translate(-50%, -50%);
+}
+
+@media (max-width: 767px) {
+    .title {
+        font-weight: bold;
+        font-size: 16px;
+    }
+    .onload-note {
+        font-size: 16px;
+    }
+    .box2, .box3, .box4{
+display: none !important;
+    }
+
+    #btn-next {
+        left: 80%;
+        top: 80%;
+    }
+    
+    #btn-prev {
+        left: 20%;
+        top: 80%;
+    }
+
+    #api-wrapper {
+        position: absolute;
+        margin-top: 0px;
+        text-align: center;
+        left: 0%;
+        transform: translateX(0%);
+        z-index: 10; 
+        top: 0;
+        left: 0;
+        right:0;
+    }
+    .inner-wrapper {
+        padding: 0px;
+        background-color: rgba(255,255,255,.8);
+        border: 1.5px solid rgb(133, 129, 129);
+        border-radius: 5px;
+        box-shadow: 10px 10px 31px -1px rgba(0,0,0,0.75);
+    }
+}
+
+@media (min-width: 768px) and (max-width: 991px) {
+ 
+    #btn-next {
+        left: 80%;
+        top: 70%;
+    }
+    
+    #btn-prev {
+        left: 20%;
+        top: 70%;
+    }
+}
+
+@media (min-width: 992px) and (max-width: 1200px) {
+    #btn-next {
+        left: 80%;
+        top: 70%;
+    }
+    
+    #btn-prev {
+        left: 20%;
+        top: 70%;
+    }
+}
