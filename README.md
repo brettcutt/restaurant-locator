@@ -26,7 +26,7 @@ This project makes use of the Zomato API to filter through and display a wide va
   - copy the api key
 
 - Two ways to enter your api key
-1. In the `restaurant-api.js` file:
+1. In the `main.js` file:
    - On the first line of the file, enter your api key between the arrows
    - `let apiKey = "<YOUR API-KEY-HERE>"`
 

@@ -1,45 +1,52 @@
 let apiKey = "<YOUR API-KEY-HERE>";
-let apiUrl = 'https://developers.zomato.com/api/v2.1/search?entity_id=297&entity_type=city&apikey=';
+let city = "297"
+let apiUrl = 'https://developers.zomato.com/api/v2.1/search?entity_id=' + city + '&entity_type=city&apikey=';
 let restaurantData = apiUrl + apiKey;
 
 
 window.onload = function () {
+
+    //refer to city-choice.js
+    onCityChoice()
+
     if (apiKey != '<YOUR API-KEY-HERE>') {
-        start();
+
+        $('#api-wrapper').hide()
+        document.querySelector('#api').value = apiKey;
+
+        //refer to city-choice.js
+        onCityChoice();
     }
 };
 
-// If an api key hasn't been entered above but in the browser the function will trigger.
-// Location index.html <button onclick="apikey()">
-function apikey() {
-    apiKey = document.getElementById('api').value;
-    restaurantData = apiUrl + apiKey;
-    start();
-}
 
 // Once an api key has been entered, this is the main function that will start.
-function start() {
+function startMain() {
+
+    // Make a call to the Zomato API
     $.when(
         $.getJSON(restaurantData)
     ).then(
         function (response) {
             restaurants = response.restaurants;
 
-            // Fades the #restaurant-detail element out and in again.
             // refer to page-fading.js
-            onApiKeyEnterFade();
+            fadeElements();
 
-            // fades #restaurant-list elment out and in again
-            $('#restaurant-list').hide('fade', 1000);
+            // fades #restaurant-list element out and in again
+
             setTimeout(
                 function () {
-                    $('#restaurant-list').show('fade', 1000);
 
-                    // Adds a list of restaurants to #restaurant-list(ul)
+                    $('#restaurant-list').show('fade', 1000);
+                    $('#restaurant-detail').show('fade', 1000);
+
+                    // Adds a list of restaurants to #restaurant-list(ul). Refer to function below.
                     document.getElementById('restaurant-list').innerHTML = getRestaurantList(restaurants);
 
-                    // line 3 restaurant data = the array of the restaurant objects.
+                    //set the global variable to this array of objects. located in main.js line 4
                     restaurantData = restaurants;
+
                 }, 1000);
 
         }, function (errorResponse) {
@@ -51,6 +58,7 @@ function start() {
                 $("#error").html(
                     `<h2> ${errorResponse.responseJSON.message}</h2> `
                 );
+                $('#api-wrapper').show('fade', 1000)
             }
         }
     )
@@ -107,7 +115,7 @@ function onSelectRestaurant(restaurantName) {
                     <div class="col-xs-12 col-md-6">
                         <img class="restaurant-image" src="${restaurant.thumb}" alt="${restaurant.name}" ;'>
                     </div>
-                    <div class="col-xs-12 col-md-6">
+                    <div class="details col-xs-12 col-md-6">
                         <h3>${restaurant.name}</h3>
                         <p class='restaurant-location'>${restaurant.location.address}</p>
                         <div class='bookings-delivery'>
