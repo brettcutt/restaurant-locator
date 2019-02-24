@@ -11,10 +11,41 @@
     <link rel="stylesheet" href="//code.jquery.com/ui/1.12.1/themes/base/jquery-ui.css">
     <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet">
 
-    <title>Restaurants of Adelaide</title>
+    <title>Restaurants of Australia</title>
 </head>
 
 <body>
+
+    <!-- CITY SELECTION -->
+    <div class="city-overlay">
+        <div id="api-wrapper">
+            <div class="inner-wrapper">
+                <h1 class='title'>Restaurants of Australia</h1>
+                <p class='onload-note hidden-xs'>To start enter your Zomato API key and <br> select a city!</p>
+                <input type="text" name="api" id="api" class='api' placeholder="API key">
+                <p>If you don't have an api key you can get one from the <a href="https://developers.zomato.com/api"
+                        target="_blank">Zomato website.</a></p>
+                <!-- <button class='apikey-btn' onclick="apikey()">Enter API KEY</button> -->
+                <p id='error'></p>
+            </div>
+        </div>
+        <button id='btn-next' class='arrow-btn' onclick='moveBoxesNext()'><i class="fas fa-arrow-right"></i></button>
+        <button id='btn-prev' class='arrow-btn' onclick='moveBoxesPrev()'><i class="fas fa-arrow-left"></i></button>
+        <div id='box1' class="box1 box" value="297" onclick="getCityValue('box1')">
+            <p class='city-name'>Adelaide</p>
+        </div>
+        <div id='box2' class="box2 box" value="259" onclick="getCityValue('box2')">
+            <p class='city-name'>Melbourne</p>
+        </div>
+        <div id='box3' class="box3 box" value="260" onclick="getCityValue('box3')">
+            <p class='city-name'>Sydney</p>
+        </div>
+        <div id='box4' class="box4 box" value="298" onclick="getCityValue('box4')">
+            <p class='city-name'>Brisbane</p>
+        </div>
+    </div>
+
+    <!-- FILTERS -->
     <header class='container'>
         <div class="row">
 
@@ -76,6 +107,7 @@
                     <input id='keyword-search' value="" class='keyword-search' type="text" name='keyword'
                         placeholder="Keyword search">
                     <button class='keyword-btn' onclick='filterRestaurants()'>Search</button>
+                    <button class='city-btn' onclick='changeCity()'>Select City</button>
 
 
                 </div>
@@ -84,10 +116,10 @@
         </div>
     </header>
 
-
+    <!-- RESTAURANT LIST AND DETAIL -->
     <div class="container">
         <div class="row restaurant-main">
-            <div class="adelaide"></div>
+            <div id=city-pic></div>
             <div class="overlay"></div>
             <!-- RESTAURANT LIST -->
             <div id='restaurant-results' class="col-xs-12 col-sm-4 col-md-3 bottom-border top-border">
@@ -102,16 +134,7 @@
             <!-- RESTAURANT DETAIL -->
             <div class="col-xs-12 col-sm-8 col-md-9 ">
                 <div id='restaurant-detail' class="row">
-                    <h2 class='select-restaurant'>Please select a restaurant!</h2>
-                    <div id="api-wrapper">
-                        <h1>Restaurants of Adelaide</h1>
-                        <p class='onload-note'>Enter a Zomato API key!</p>
-                        <p>If you don't have an api key you can get one from the <a
-                                href="https://developers.zomato.com/api" target="_blank">Zomato website.</a></p>
-                        <input type="text" name="api" id="api" class='api' placeholder="API key">
-                        <button class='apikey-btn' onclick="apikey()">Enter API KEY</button>
-                        <p id='error'></p>
-                    </div>
+                    <h2 class='select-restaurant'>Select a restaurant or filter a search!</h2>
                     <!-- Detail created from restaurant-api.js here -->
                 </div>
             </div>
@@ -119,15 +142,20 @@
         </div>
     </div>
     <span id='bottom-page' class='hidden-sm hidden-md hidden-lg'></span>
+
+
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
     <script src="https://code.jquery.com/ui/1.12.1/jquery-ui.js"></script>
     <script src="static/js/checkboxes.js"></script>
     <script src="static/jquery/slider.js"></script>
     <script src="static/jquery/mobile-buttons.js"></script>
-    <script src="static/js/restaurant-api.js"></script>
+    <script src="static/js/main.js"></script>
     <script src="static/js/filter.js"></script>
     <script src="static/js/list-highlight.js"></script>
     <script src="static/js/page-fading.js"></script>
+    <script src="static/js/city-choice.js"></script>
+    <script src="static/js/button-prev.js"></script>
+    <script src="static/js/button-next.js"></script>
 </body>
 
 </html>
