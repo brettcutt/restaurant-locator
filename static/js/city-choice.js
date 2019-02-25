@@ -25,7 +25,9 @@ function getCityValue(boxNumber) {
         { 'id': 297, 'name': 'adelaide' },
         { 'id': 259, 'name': 'melbourne' },
         { 'id': 260, 'name': 'sydney' },
-        { 'id': 298, 'name': 'brisbane' }
+        { 'id': 298, 'name': 'brisbane' },
+        { 'id': 2555, 'name': 'goldcoast' },
+
     ]
 
     var cityPic
